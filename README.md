@@ -1,22 +1,34 @@
-# PoetryVerse — The World of Poetry
+# PoetryVerse® Official — Final Deno Edition 2.0
 
-Next.js frontend connected to the live PoetryVerse Deno API.
+A single-app Deno Deploy + Deno KV poetry platform. No Supabase or Vercel required.
 
-## Backend
-Live API: https://poetryverse.786.deno.net
+## Included
+- Premium responsive branded website
+- Urdu + English ready UI/content model
+- Signup, login, logout, 30-day sessions
+- PBKDF2 password hashing
+- User profiles and 300 starter AI-credit field
+- Poetry submission and moderation workflow
+- Super Admin approval/rejection + featured-poem API
+- Search and 14 categories
+- Latest/popular/featured sorting API
+- Likes, saved poems, comments
+- User dashboard and submission status
+- Platform statistics
+- Deno KV persistence
+- Health/API endpoints
+- Same-origin website + API
 
-Set `NEXT_PUBLIC_API_URL` to the API base URL when deploying. The frontend also defaults to the live API above if the variable is not set.
+## Deploy on Deno
+- App directory: repository root
+- Entrypoint: `main.ts`
+- Attach KV database: `poetryverse-kv`
+- `deno.json` is included
 
-## Connected MVP features
-- Account signup/login/logout
-- Persistent bearer-token session in the browser
-- 300 monthly starter credits shown on the account
-- Search approved poetry through the Deno API
-- Category-based poetry discovery
-- Submit original poetry
-- Submission status: pending/approved/rejected
-- View own submissions
-- Super Admin approval remains enforced by the Deno backend
+## Recommended environment variables
+- `ADMIN_EMAIL` = your Super Admin email
+- `SETUP_KEY` = a long random secret for emergency admin promotion
+- `FRONTEND_ORIGIN` = your production domain, or leave unset for same-origin MVP
 
-## Backend architecture
-Deno Deploy + Deno KV. Supabase is not required.
+## Important
+Do not expose `SETUP_KEY` in frontend code. Create your account using `ADMIN_EMAIL` to receive Super Admin role automatically.
