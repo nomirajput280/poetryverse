@@ -1,36 +1,22 @@
-# PoetryVerse Deno Backend
+# PoetryVerse — The World of Poetry
 
-Deno Deploy backend for PoetryVerse. It uses **Deno KV** for the first MVP so Supabase is not required.
+Next.js frontend connected to the live PoetryVerse Deno API.
 
-## Local
+## Backend
+Live API: https://poetryverse.786.deno.net
 
-```bash
-deno task dev
-```
+Set `NEXT_PUBLIC_API_URL` to the API base URL when deploying. The frontend also defaults to the live API above if the variable is not set.
 
-API runs on `http://localhost:8000`.
+## Connected MVP features
+- Account signup/login/logout
+- Persistent bearer-token session in the browser
+- 300 monthly starter credits shown on the account
+- Search approved poetry through the Deno API
+- Category-based poetry discovery
+- Submit original poetry
+- Submission status: pending/approved/rejected
+- View own submissions
+- Super Admin approval remains enforced by the Deno backend
 
-## Environment
-
-- `PORT=8000`
-- `FRONTEND_ORIGIN=http://localhost:3000` (use the real PoetryVerse frontend origin in production)
-- `ADMIN_EMAIL=your-admin-email@example.com` (new signup with this email becomes Super Admin)
-- `SETUP_KEY=long-random-secret` (optional emergency role setup endpoint)
-
-## Core endpoints
-
-- `GET /health`
-- `POST /auth/signup`
-- `POST /auth/login`
-- `POST /auth/logout`
-- `GET /auth/me`
-- `POST /submissions`
-- `GET /submissions/mine`
-- `GET /admin/submissions`
-- `PATCH /admin/submissions/:id` with `{ "status": "approved" | "rejected" }`
-- `GET /poems?q=&category=`
-- `POST /setup/admin` with `x-setup-key`
-
-## Deno Deploy
-
-Create a Deno Deploy app and point it to `deno/src/main.ts`. Add the environment variables above. Do not put any secret setup key in the frontend.
+## Backend architecture
+Deno Deploy + Deno KV. Supabase is not required.
